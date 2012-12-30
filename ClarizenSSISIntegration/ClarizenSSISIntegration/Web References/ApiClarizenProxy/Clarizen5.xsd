@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://clarizen.com/api/queries" elementFormDefault="qualified" targetNamespace="http://clarizen.com/api/queries" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://api.clarizen.com/v1.0/Clarizen.svc?xsd=xsd0" namespace="http://clarizen.com/api" />
+  <xs:complexType name="GetTemplateDescriptionsResult">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://clarizen.com/api" base="q1:Result">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Templates" nillable="true" type="q1:stringList" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetTemplateDescriptionsResult" nillable="true" type="tns:GetTemplateDescriptionsResult" />
+  <xs:complexType name="CountQueryResult">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://clarizen.com/api" base="q2:Result">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Count" type="xs:long" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CountQueryResult" nillable="true" type="tns:CountQueryResult" />
+  <xs:complexType name="GetWorkItemResourcesResult">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q3="http://clarizen.com/api" base="q3:Result">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="WorkItemResources" nillable="true" type="tns:ArrayOfWorkItemResources" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetWorkItemResourcesResult" nillable="true" type="tns:GetWorkItemResourcesResult" />
+  <xs:complexType name="ArrayOfWorkItemResources">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="WorkItemResources" nillable="true" type="tns:WorkItemResources" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfWorkItemResources" nillable="true" type="tns:ArrayOfWorkItemResources" />
+  <xs:complexType name="WorkItemResources">
+    <xs:sequence>
+      <xs:element xmlns:q4="http://clarizen.com/api" minOccurs="0" name="Resources" nillable="true" type="q4:ArrayOfBaseEntity" />
+      <xs:element xmlns:q5="http://clarizen.com/api" minOccurs="0" name="WorkItemId" nillable="true" type="q5:EntityId" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="WorkItemResources" nillable="true" type="tns:WorkItemResources" />
+  <xs:complexType name="QueryResult">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q6="http://clarizen.com/api" base="q6:Result">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Entities" nillable="true" type="q6:ArrayOfBaseEntity" />
+          <xs:element minOccurs="0" name="Paging" nillable="true" type="tns:Paging" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QueryResult" nillable="true" type="tns:QueryResult" />
+  <xs:complexType name="Paging">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="HasMore" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PageNumber" type="xs:int" />
+      <xs:element minOccurs="0" name="PageSize" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Paging" nillable="true" type="tns:Paging" />
+  <xs:complexType name="Query">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q7="http://clarizen.com/api" base="q7:BaseMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Paging" nillable="true" type="tns:Paging" />
+          <xs:element minOccurs="0" name="Permissions" type="q7:PermissionOptions" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Query" nillable="true" type="tns:Query" />
+  <xs:complexType name="BuiltInQuery">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Query">
+        <xs:sequence>
+          <xs:element xmlns:q8="http://clarizen.com/api" minOccurs="0" name="Fields" nillable="true" type="q8:stringList" />
+          <xs:element minOccurs="0" name="Orders" nillable="true" type="tns:ArrayOfOrderBy" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BuiltInQuery" nillable="true" type="tns:BuiltInQuery" />
+  <xs:complexType name="ArrayOfOrderBy">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OrderBy" nillable="true" type="tns:OrderBy" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOrderBy" nillable="true" type="tns:ArrayOfOrderBy" />
+  <xs:complexType name="OrderBy">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FieldName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Order" type="tns:Order" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OrderBy" nillable="true" type="tns:OrderBy" />
+  <xs:simpleType name="Order">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Ascending" />
+      <xs:enumeration value="Descending" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Order" nillable="true" type="tns:Order" />
+  <xs:complexType name="GetTemplateDescriptionsMessage">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q9="http://clarizen.com/api" base="q9:BaseMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="TypeName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetTemplateDescriptionsMessage" nillable="true" type="tns:GetTemplateDescriptionsMessage" />
+  <xs:complexType name="Condition">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="Condition" nillable="true" type="tns:Condition" />
+  <xs:complexType name="LogicalCondition">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Condition">
+        <xs:sequence>
+          <xs:element xmlns:q10="http://clarizen.com/api" minOccurs="0" name="Conditions" nillable="true" type="q10:ConditionList" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LogicalCondition" nillable="true" type="tns:LogicalCondition" />
+  <xs:complexType name="And">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:LogicalCondition">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="And" nillable="true" type="tns:And" />
+  <xs:complexType name="Or">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:LogicalCondition">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Or" nillable="true" type="tns:Or" />
+  <xs:complexType name="Compare">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Condition">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="LeftExpression" nillable="true" type="tns:Expression" />
+          <xs:element name="Operator" type="tns:Operator" />
+          <xs:element minOccurs="0" name="RightExpression" nillable="true" type="tns:Expression" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Compare" nillable="true" type="tns:Compare" />
+  <xs:complexType name="Expression">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="Expression" nillable="true" type="tns:Expression" />
+  <xs:complexType name="ConstantExpression">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Expression">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Value" nillable="true" type="xs:anyType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ConstantExpression" nillable="true" type="tns:ConstantExpression" />
+  <xs:complexType name="FieldExpression">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Expression">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="FieldName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="FieldExpression" nillable="true" type="tns:FieldExpression" />
+  <xs:complexType name="EntityIdExpression">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Expression">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="EntityIdExpression" nillable="true" type="tns:EntityIdExpression" />
+  <xs:complexType name="QueryExpression">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Expression">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Query" nillable="true" type="tns:Query" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QueryExpression" nillable="true" type="tns:QueryExpression" />
+  <xs:simpleType name="Operator">
+    <xs:annotation>
+      <xs:appinfo />
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Equal" />
+      <xs:enumeration value="NotEqual" />
+      <xs:enumeration value="LessThan" />
+      <xs:enumeration value="GreaterThan" />
+      <xs:enumeration value="LessThanOrEqual" />
+      <xs:enumeration value="GreaterThanOrEqual" />
+      <xs:enumeration value="BeginsWith" />
+      <xs:enumeration value="EndsWith" />
+      <xs:enumeration value="Contains" />
+      <xs:enumeration value="DoesNotContain" />
+      <xs:enumeration value="In">
+        <xs:annotation>
+          <xs:documentation>In is only supported in compare operations where the left side is a FieldExpression which represents a "reference to entity" field and the right side is a QueryExpression</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Operator" nillable="true" type="tns:Operator" />
+  <xs:complexType name="EntityQuery">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Query">
+        <xs:sequence>
+          <xs:element xmlns:q11="http://clarizen.com/api" minOccurs="0" name="Fields" nillable="true" type="q11:stringList" />
+          <xs:element minOccurs="0" name="Orders" nillable="true" type="tns:ArrayOfOrderBy" />
+          <xs:element minOccurs="0" name="TypeName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Where" nillable="true" type="tns:Condition" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="EntityQuery" nillable="true" type="tns:EntityQuery" />
+  <xs:complexType name="CountQuery">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q12="http://clarizen.com/api" base="q12:BaseMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Query" nillable="true" type="tns:Query" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CountQuery" nillable="true" type="tns:CountQuery" />
+  <xs:complexType name="GetWorkItemResourcesMessage">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q13="http://clarizen.com/api" base="q13:BaseMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Fields" nillable="true" type="q13:stringList" />
+          <xs:element minOccurs="0" name="Permissions" type="q13:PermissionOptions" />
+          <xs:element minOccurs="0" name="WorkItemsIds" nillable="true" type="q13:ArrayOfEntityId" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetWorkItemResourcesMessage" nillable="true" type="tns:GetWorkItemResourcesMessage" />
+  <xs:complexType name="QueryByExample">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Query">
+        <xs:sequence>
+          <xs:element xmlns:q14="http://clarizen.com/api" minOccurs="0" name="Entity" nillable="true" type="q14:BaseEntity" />
+          <xs:element xmlns:q15="http://clarizen.com/api" minOccurs="0" name="Fields" nillable="true" type="q15:stringList" />
+          <xs:element minOccurs="0" name="Orders" nillable="true" type="tns:ArrayOfOrderBy" />
+          <xs:element minOccurs="0" name="TypeName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QueryByExample" nillable="true" type="tns:QueryByExample" />
+  <xs:complexType name="RecursiveQuery">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BuiltInQuery">
+        <xs:sequence>
+          <xs:element name="Levels" type="xs:int" />
+          <xs:element xmlns:q16="http://clarizen.com/api" minOccurs="0" name="RootItemId" nillable="true" type="q16:EntityId" />
+          <xs:element minOccurs="0" name="TypeName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Where" nillable="true" type="tns:Condition" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RecursiveQuery" nillable="true" type="tns:RecursiveQuery" />
+  <xs:complexType name="WorkItemRecursiveQuery">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RecursiveQuery">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="IncludeShortcuts" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="WorkItemRecursiveQuery" nillable="true" type="tns:WorkItemRecursiveQuery" />
+  <xs:complexType name="SearchQuery">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Query">
+        <xs:sequence>
+          <xs:element xmlns:q17="http://clarizen.com/api" minOccurs="0" name="Fields" nillable="true" type="q17:stringList" />
+          <xs:element minOccurs="0" name="SearchText" nillable="true" type="xs:string" />
+          <xs:element xmlns:q18="http://clarizen.com/api" minOccurs="0" name="TypeNames" nillable="true" type="q18:stringList" />
+          <xs:element minOccurs="0" name="Where" nillable="true" type="tns:Condition" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SearchQuery" nillable="true" type="tns:SearchQuery" />
+</xs:schema>

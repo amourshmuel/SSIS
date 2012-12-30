@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://clarizen.com/api/metadata" elementFormDefault="qualified" targetNamespace="http://clarizen.com/api/metadata" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://api.clarizen.com/v1.0/Clarizen.svc?xsd=xsd0" namespace="http://clarizen.com/api" />
+  <xs:complexType name="ListEntitiesResult">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://clarizen.com/api" base="q1:Result">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="TypeNames" nillable="true" type="q1:stringList" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ListEntitiesResult" nillable="true" type="tns:ListEntitiesResult" />
+  <xs:complexType name="DescribeEntitiesResult">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://clarizen.com/api" base="q2:Result">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="EntityDescriptions" nillable="true" type="tns:ArrayOfEntityDescription" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DescribeEntitiesResult" nillable="true" type="tns:DescribeEntitiesResult" />
+  <xs:complexType name="ArrayOfEntityDescription">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EntityDescription" nillable="true" type="tns:EntityDescription" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEntityDescription" nillable="true" type="tns:ArrayOfEntityDescription" />
+  <xs:complexType name="EntityDescription">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Fields" nillable="true" type="tns:ArrayOfFieldDescription" />
+      <xs:element minOccurs="0" name="TypeName" nillable="true" type="xs:string" />
+      <xs:element xmlns:q3="http://clarizen.com/api" minOccurs="0" name="ValidStates" nillable="true" type="q3:stringList" />
+      <xs:element minOccurs="0" name="Label" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LabelPlural" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EntityDescription" nillable="true" type="tns:EntityDescription" />
+  <xs:complexType name="ArrayOfFieldDescription">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="FieldDescription" nillable="true" type="tns:FieldDescription" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFieldDescription" nillable="true" type="tns:ArrayOfFieldDescription" />
+  <xs:complexType name="FieldDescription">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Type" type="tns:FieldType" />
+      <xs:element name="Calculated" type="xs:boolean" />
+      <xs:element name="CreateOnly" type="xs:boolean" />
+      <xs:element name="Custom" type="xs:boolean" />
+      <xs:element minOccurs="0" name="DefaultValue" nillable="true" type="xs:anyType" />
+      <xs:element name="Internal" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Label" nillable="true" type="xs:string" />
+      <xs:element name="Nullable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PresentationType" type="tns:PresentationType" />
+      <xs:element name="System" type="xs:boolean" />
+      <xs:element name="Updateable" type="xs:boolean" />
+      <xs:element name="Visible" type="xs:boolean" />
+      <xs:element name="DecimalPlaces" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FieldDescription" nillable="true" type="tns:FieldDescription" />
+  <xs:simpleType name="FieldType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Boolean" />
+      <xs:enumeration value="String" />
+      <xs:enumeration value="Integer" />
+      <xs:enumeration value="Long" />
+      <xs:enumeration value="Double" />
+      <xs:enumeration value="DateTime" />
+      <xs:enumeration value="Date" />
+      <xs:enumeration value="Entity" />
+      <xs:enumeration value="Duration" />
+      <xs:enumeration value="Money" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="FieldType" nillable="true" type="tns:FieldType" />
+  <xs:simpleType name="PresentationType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Text" />
+      <xs:enumeration value="Numeric" />
+      <xs:enumeration value="Date" />
+      <xs:enumeration value="Checkbox" />
+      <xs:enumeration value="TextArea" />
+      <xs:enumeration value="Currency" />
+      <xs:enumeration value="Duration" />
+      <xs:enumeration value="ReferenceToObject" />
+      <xs:enumeration value="PickList" />
+      <xs:enumeration value="Url" />
+      <xs:enumeration value="Percent" />
+      <xs:enumeration value="Other" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="PresentationType" nillable="true" type="tns:PresentationType" />
+  <xs:complexType name="EntityFieldDescription">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:FieldDescription">
+        <xs:sequence>
+          <xs:element xmlns:q4="http://clarizen.com/api" minOccurs="0" name="ReferencedEntities" nillable="true" type="q4:stringList" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="EntityFieldDescription" nillable="true" type="tns:EntityFieldDescription" />
+  <xs:complexType name="LinkEntityDescription">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:EntityDescription">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PossibleLinks" nillable="true" type="tns:ArrayOfPossibleLinkDescription" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LinkEntityDescription" nillable="true" type="tns:LinkEntityDescription" />
+  <xs:complexType name="ArrayOfPossibleLinkDescription">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PossibleLinkDescription" nillable="true" type="tns:PossibleLinkDescription" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPossibleLinkDescription" nillable="true" type="tns:ArrayOfPossibleLinkDescription" />
+  <xs:complexType name="PossibleLinkDescription">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FromEntity" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FromField" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ToEntity" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ToField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PossibleLinkDescription" nillable="true" type="tns:PossibleLinkDescription" />
+  <xs:complexType name="PickupEntityDescription">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:EntityDescription">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Pickups" nillable="true" type="tns:ArrayOfPickupDescription" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PickupEntityDescription" nillable="true" type="tns:PickupEntityDescription" />
+  <xs:complexType name="ArrayOfPickupDescription">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PickupDescription" nillable="true" type="tns:PickupDescription" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPickupDescription" nillable="true" type="tns:ArrayOfPickupDescription" />
+  <xs:complexType name="PickupDescription">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DisplayValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PickupDescription" nillable="true" type="tns:PickupDescription" />
+  <xs:complexType name="GetSystemSettingsValuesResult">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q5="http://clarizen.com/api" base="q5:Result">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Values" nillable="true" type="q5:anyTypeList" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetSystemSettingsValuesResult" nillable="true" type="tns:GetSystemSettingsValuesResult" />
+  <xs:complexType name="MetadataMessage">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q6="http://clarizen.com/api" base="q6:BaseMessage">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="MetadataMessage" nillable="true" type="tns:MetadataMessage" />
+  <xs:complexType name="ListEntitiesMessage">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:MetadataMessage">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ListEntitiesMessage" nillable="true" type="tns:ListEntitiesMessage" />
+  <xs:complexType name="DescribeEntitiesMessage">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:MetadataMessage">
+        <xs:sequence>
+          <xs:element xmlns:q7="http://clarizen.com/api" minOccurs="0" name="TypeNames" nillable="true" type="q7:stringList" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DescribeEntitiesMessage" nillable="true" type="tns:DescribeEntitiesMessage" />
+  <xs:complexType name="GetSystemSettingsValuesMessage">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:MetadataMessage">
+        <xs:sequence>
+          <xs:element xmlns:q8="http://clarizen.com/api" minOccurs="0" name="Settings" nillable="true" type="q8:stringList" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetSystemSettingsValuesMessage" nillable="true" type="tns:GetSystemSettingsValuesMessage" />
+</xs:schema>

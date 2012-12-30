@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://clarizen.com/api/files" elementFormDefault="qualified" targetNamespace="http://clarizen.com/api/files" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://api.clarizen.com/v1.0/Clarizen.svc?xsd=xsd0" namespace="http://clarizen.com/api" />
+  <xs:complexType name="DownloadResult">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://clarizen.com/api" base="q1:Result">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="FileInformation" nillable="true" type="tns:FileInformation" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DownloadResult" nillable="true" type="tns:DownloadResult" />
+  <xs:complexType name="FileInformation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Content" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="ExtendedInfo" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="FileName" nillable="true" type="xs:string" />
+      <xs:element name="Storage" type="tns:Storage" />
+      <xs:element minOccurs="0" name="SubType" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Url" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FileInformation" nillable="true" type="tns:FileInformation" />
+  <xs:simpleType name="Storage">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Server" />
+      <xs:enumeration value="Url" />
+      <xs:enumeration value="Link" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Storage" nillable="true" type="tns:Storage" />
+  <xs:complexType name="DownloadMessage">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://clarizen.com/api" base="q2:BaseMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DocumentId" nillable="true" type="q2:EntityId" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DownloadMessage" nillable="true" type="tns:DownloadMessage" />
+  <xs:complexType name="UploadMessage">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q3="http://clarizen.com/api" base="q3:BaseMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DocumentId" nillable="true" type="q3:EntityId" />
+          <xs:element minOccurs="0" name="FileInformation" nillable="true" type="tns:FileInformation" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UploadMessage" nillable="true" type="tns:UploadMessage" />
+</xs:schema>

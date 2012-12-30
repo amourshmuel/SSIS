@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://clarizen.com/api/faults" elementFormDefault="qualified" targetNamespace="http://clarizen.com/api/faults" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="LoginFailure">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:GeneralFault">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LoginFailure" nillable="true" type="tns:LoginFailure" />
+  <xs:complexType name="GeneralFault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GeneralFault" nillable="true" type="tns:GeneralFault" />
+  <xs:complexType name="SessionTimeoutFailure">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:GeneralFault">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SessionTimeoutFailure" nillable="true" type="tns:SessionTimeoutFailure" />
+</xs:schema>

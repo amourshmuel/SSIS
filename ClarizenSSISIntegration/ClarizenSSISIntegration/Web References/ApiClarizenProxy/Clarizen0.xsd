@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://clarizen.com/api/projectManagement" elementFormDefault="qualified" targetNamespace="http://clarizen.com/api/projectManagement" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://api.clarizen.com/v1.0/Clarizen.svc?xsd=xsd0" namespace="http://clarizen.com/api" />
+  <xs:import schemaLocation="https://api.clarizen.com/v1.0/Clarizen.svc?xsd=xsd3" namespace="http://clarizen.com/api/queries" />
+  <xs:complexType name="CommentsQuery">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://clarizen.com/api/queries" base="q1:BuiltInQuery">
+        <xs:sequence>
+          <xs:element xmlns:q2="http://clarizen.com/api" minOccurs="0" name="AttachedToId" nillable="true" type="q2:EntityId" />
+          <xs:element minOccurs="0" name="CommentType" type="tns:CommentType" />
+          <xs:element minOccurs="0" name="Visibility" type="tns:CommentVisibility" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CommentsQuery" nillable="true" type="tns:CommentsQuery" />
+  <xs:simpleType name="CommentType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Note" />
+      <xs:enumeration value="Discussion" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="CommentType" nillable="true" type="tns:CommentType" />
+  <xs:simpleType name="CommentVisibility">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="All" />
+      <xs:enumeration value="Private" />
+      <xs:enumeration value="Public" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="CommentVisibility" nillable="true" type="tns:CommentVisibility" />
+  <xs:complexType name="MyWorkItemsQuery">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q3="http://clarizen.com/api/queries" base="q3:BuiltInQuery">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ItemsFilter" type="tns:WorkItemFilter" />
+          <xs:element minOccurs="0" name="ItemsState" type="tns:WorkItemState" />
+          <xs:element minOccurs="0" name="ItemsType" type="tns:WorkItemType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="MyWorkItemsQuery" nillable="true" type="tns:MyWorkItemsQuery" />
+  <xs:simpleType name="WorkItemFilter">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="IHaveAnyRole" />
+      <xs:enumeration value="IManageTheProject" />
+      <xs:enumeration value="IAmAManager" />
+      <xs:enumeration value="IAmAResource" />
+      <xs:enumeration value="IAmAReviewer" />
+      <xs:enumeration value="IAmAManagerOrAResource" />
+      <xs:enumeration value="All" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="WorkItemFilter" nillable="true" type="tns:WorkItemFilter" />
+  <xs:simpleType name="WorkItemState">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="All" />
+      <xs:enumeration value="Active" />
+      <xs:enumeration value="Cancelled" />
+      <xs:enumeration value="Draft" />
+      <xs:enumeration value="Completed" />
+      <xs:enumeration value="OnHold" />
+      <xs:enumeration value="Current" />
+      <xs:enumeration value="Upcoming" />
+      <xs:enumeration value="InTheWorks" />
+      <xs:enumeration value="Executable" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="WorkItemState" nillable="true" type="tns:WorkItemState" />
+  <xs:simpleType name="WorkItemType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Project" />
+      <xs:enumeration value="Milestone" />
+      <xs:enumeration value="Task" />
+      <xs:enumeration value="All" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="WorkItemType" nillable="true" type="tns:WorkItemType" />
+  <xs:complexType name="WorkItemsQuery">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:MyWorkItemsQuery">
+        <xs:sequence>
+          <xs:element xmlns:q4="http://clarizen.com/api" minOccurs="0" name="UserIds" nillable="true" type="q4:ArrayOfEntityId" />
+          <xs:element xmlns:q5="http://clarizen.com/api/queries" minOccurs="0" name="Where" nillable="true" type="q5:Condition" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="WorkItemsQuery" nillable="true" type="tns:WorkItemsQuery" />
+  <xs:complexType name="ExpenseQuery">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q6="http://clarizen.com/api/queries" base="q6:EntityQuery">
+        <xs:sequence>
+          <xs:element xmlns:q7="http://clarizen.com/api" minOccurs="0" name="CustomerId" nillable="true" type="q7:EntityId" />
+          <xs:element xmlns:q8="http://clarizen.com/api" minOccurs="0" name="ProjectId" nillable="true" type="q8:EntityId" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ExpenseQuery" nillable="true" type="tns:ExpenseQuery" />
+  <xs:complexType name="TimesheetQuery">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q9="http://clarizen.com/api/queries" base="q9:EntityQuery">
+        <xs:sequence>
+          <xs:element xmlns:q10="http://clarizen.com/api" minOccurs="0" name="CustomerId" nillable="true" type="q10:EntityId" />
+          <xs:element minOccurs="0" name="IAmTheApprover" type="xs:boolean" />
+          <xs:element xmlns:q11="http://clarizen.com/api" minOccurs="0" name="ProjectId" nillable="true" type="q11:EntityId" />
+          <xs:element xmlns:q12="http://clarizen.com/api" minOccurs="0" name="TimesheetState" type="q12:TimesheetState" />
+          <xs:element xmlns:q13="http://clarizen.com/api" minOccurs="0" name="WorkItems" nillable="true" type="q13:ArrayOfEntityId" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="TimesheetQuery" nillable="true" type="tns:TimesheetQuery" />
+  <xs:complexType name="TimesheetViewQuery">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q14="http://clarizen.com/api/queries" base="q14:EntityQuery">
+        <xs:sequence>
+          <xs:element name="EndDate" type="xs:dateTime" />
+          <xs:element name="StartDate" type="xs:dateTime" />
+          <xs:element xmlns:q15="http://clarizen.com/api" minOccurs="0" name="UserId" nillable="true" type="q15:EntityId" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="TimesheetViewQuery" nillable="true" type="tns:TimesheetViewQuery" />
+  <xs:complexType name="IssuesQuery">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q16="http://clarizen.com/api/queries" base="q16:EntityQuery">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CustomerCondition" nillable="true" type="q16:Condition" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="IssuesQuery" nillable="true" type="tns:IssuesQuery" />
+  <xs:complexType name="ProjectIssuesQuery">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q17="http://clarizen.com/api/queries" base="q17:BuiltInQuery">
+        <xs:sequence>
+          <xs:element xmlns:q18="http://clarizen.com/api" minOccurs="0" name="ProjectId" nillable="true" type="q18:EntityId" />
+          <xs:element minOccurs="0" name="TypeName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ProjectIssuesQuery" nillable="true" type="tns:ProjectIssuesQuery" />
+  <xs:complexType name="WorkItemsByFileNameQuery">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q19="http://clarizen.com/api/queries" base="q19:BuiltInQuery">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="FileName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="WorkItemsByFileNameQuery" nillable="true" type="tns:WorkItemsByFileNameQuery" />
+  <xs:complexType name="DocumentsQuery">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q20="http://clarizen.com/api/queries" base="q20:BuiltInQuery">
+        <xs:sequence>
+          <xs:element xmlns:q21="http://clarizen.com/api" minOccurs="0" name="WorkItemId" nillable="true" type="q21:EntityId" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DocumentsQuery" nillable="true" type="tns:DocumentsQuery" />
+</xs:schema>

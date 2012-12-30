@@ -1,0 +1,128 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ClarizenSSISIntegration.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Setting" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="ClarizenSSISIntegration_ApiClarizenProxy_Clarizen" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">
+          https://api.clarizen.com/v1.0/Clarizen.svc
+        </Value>
+    </Setting>
+    <Setting Name="RevenueCurrencyType" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Currency Type</Value>
+    </Setting>
+    <Setting Name="C_SFDC_Customer_Number" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">System.String, mscorlib, Culture=neutral</Value>
+    </Setting>
+    <Setting Name="C_SFDC_Contact_Name" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">System.String, mscorlib, Culture=neutral</Value>
+    </Setting>
+    <Setting Name="C_SFDC_Contact_Job_Title" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">System.String, mscorlib, Culture=neutral</Value>
+    </Setting>
+    <Setting Name="C_SFDC_Contact_Phone" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">System.String, mscorlib, Culture=neutral</Value>
+    </Setting>
+    <Setting Name="C_SFDC_Contact_Mobile" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">System.String, mscorlib, Culture=neutral</Value>
+    </Setting>
+    <Setting Name="C_SFDC_Contact_Email" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">System.String, mscorlib, Culture=neutral</Value>
+    </Setting>
+    <Setting Name="SYSID" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">System.String, mscorlib, Culture=neutral</Value>
+    </Setting>
+    <Setting Name="C_SFDC_Opportunity_Number" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">System.String, mscorlib, Culture=neutral</Value>
+    </Setting>
+    <Setting Name="C_SFDC__Customer_PO" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">System.String, mscorlib, Culture=neutral</Value>
+    </Setting>
+    <Setting Name="C_SFDC_Sales_Rep_Name" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">System.String, mscorlib, Culture=neutral</Value>
+    </Setting>
+    <Setting Name="C_SFDC_Sales_Rep_Number" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">System.String, mscorlib, Culture=neutral</Value>
+    </Setting>
+    <Setting Name="C_SFDC_Source_of_Opp" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">System.String, mscorlib, Culture=neutral</Value>
+    </Setting>
+    <Setting Name="ProjectManager" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">User</Value>
+    </Setting>
+    <Setting Name="Name" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">System.String, mscorlib, Culture=neutral</Value>
+    </Setting>
+    <Setting Name="C_SFDC_Issue_adv_Payment_Percentage" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">System.Double, mscorlib, Culture=neutral</Value>
+    </Setting>
+    <Setting Name="C_SFDC_OpportunityTotalBeforeDiscount" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">System.Double, mscorlib, Culture=neutral</Value>
+    </Setting>
+    <Setting Name="C_SFDC_Opportunity_Discount" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">System.Double, mscorlib, Culture=neutral</Value>
+    </Setting>
+    <Setting Name="C_SFDC_OpportunityTotalAfterDiscount" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">System.Double, mscorlib, Culture=neutral</Value>
+    </Setting>
+    <Setting Name="C_SFDC_Opportunity_Special_Comment" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">System.String, mscorlib, Culture=neutral</Value>
+    </Setting>
+    <Setting Name="C_OriginatedFrom" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C_GenericTaskOriginatedFrom</Value>
+    </Setting>
+    <Setting Name="C_ProductSFDCCode" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">System.String, mscorlib, Culture=neutral</Value>
+    </Setting>
+    <Setting Name="C_ProductSFDCQuantity" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">System.Double, mscorlib, Culture=neutral</Value>
+    </Setting>
+    <Setting Name="C_PricingUnit" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C_GenericTaskPricingUnit</Value>
+    </Setting>
+    <Setting Name="C_SFDCProductListPriceNew" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">System.Double, mscorlib, Culture=neutral</Value>
+    </Setting>
+    <Setting Name="C_POState" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C_GenericTaskPOState</Value>
+    </Setting>
+    <Setting Name="C_TranslatorPONumber" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">System.String, mscorlib, Culture=neutral</Value>
+    </Setting>
+    <Setting Name="C_TotalPO" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">System.Double, mscorlib, Culture=neutral</Value>
+    </Setting>
+    <Setting Name="C_PricingCurrency" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C_GenericTaskPricingCurrency</Value>
+    </Setting>
+    <Setting Name="OrderID" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">System.String, mscorlib, Culture=neutral</Value>
+    </Setting>
+    <Setting Name="Manager" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">User</Value>
+    </Setting>
+    <Setting Name="DisplayName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">System.String, mscorlib, Culture=neutral</Value>
+    </Setting>
+    <Setting Name="Email" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">System.String, mscorlib, Culture=neutral</Value>
+    </Setting>
+    <Setting Name="BusinessAddress" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">System.String, mscorlib, Culture=neutral</Value>
+    </Setting>
+    <Setting Name="C_TCountry" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C_UserTCountry</Value>
+    </Setting>
+    <Setting Name="OfficePhone" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">System.String, mscorlib, Culture=neutral</Value>
+    </Setting>
+    <Setting Name="MobilePhone" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">System.String, mscorlib, Culture=neutral</Value>
+    </Setting>
+    <Setting Name="C_Currency" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C_UserCurrency</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
